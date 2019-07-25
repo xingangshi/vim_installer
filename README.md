@@ -25,8 +25,8 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 
 #### 2.2 Windows 下安装
 1. 先安装 Windows 下类 Linux 环境
-    1.1 MinGW，下载地址：https://osdn.net/projects/mingw/releases/
-    1.2 Cygwin，下载地址：http://www.cygwin.com/
+    * MinGW，下载地址：https://osdn.net/projects/mingw/releases/
+    * Cygwin，下载地址：http://www.cygwin.com/
 
 2. 打开 MinGW 或 Cygwin 终端
 
