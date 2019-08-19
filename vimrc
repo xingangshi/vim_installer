@@ -88,3 +88,5 @@ if has("autocmd")
 endif
 "自动加载~/tags下的文件
 execute "set tags+=" . system("ls -l ~/tags/ | grep -v ^total | awk 'BEGIN{a=\"\"}{if (a != \"\") a = a \",\"; a=a \"~/tags/\" $NF} END{print a}'")
+
+" https://agentzh.org/misc/.vimrc
