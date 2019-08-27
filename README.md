@@ -20,7 +20,7 @@
 ##### 2.1.2 一键安装
 
 ```bash
-git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer && bash setup.sh
+git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer && bash setup.sh && cd -
 ```
 
 #### 2.2 Windows 下安装
