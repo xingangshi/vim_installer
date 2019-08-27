@@ -33,5 +33,7 @@ if [[ $need_install_ctags -eq 0 ]]; then
   fi
 fi
 
+cd ../
+
 echo 'Install done ! Please enjoy Vim.'
 
