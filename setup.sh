@@ -1,10 +1,10 @@
 #!/bin/bash
 
 cd `dirname $0`
-cp vimrc ~/.vimrc -f
+cp -rf vimrc ~/.vimrc -f
 
 mkdir -p ~/tags
-cp common_tags/* ~/tags
+cp -rf common_tags/* ~/tags
 
 if [[ -d ~/.vim ]];then
   read -p "DIR $HOME/.vim Exists! rm it? yes/no)" yes
