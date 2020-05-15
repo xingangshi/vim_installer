@@ -23,10 +23,10 @@ if [[ $need_install_ctags -eq -1 ]]; then
   echo 'Need INSTALL ctags'
   if [[ "$(uname)" == "Darwin" ]];then
   # Mac OS X 操作系统
-    sudo brew install ctags
+    brew install ctags
   elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]];then
   # GNU/Linux操作系统
-    sudo apt-get install ctags
+    apt-get install ctags
   elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" || "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]];then
   # Windows NT操作系统
     echo "Windows NT, please install ctags yourself !"
