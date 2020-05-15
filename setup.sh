@@ -17,9 +17,9 @@ if [[ -d ~/.vim ]];then
 fi
 cp -rf vim ~/.vim
 
-need_install_ctags=`echo $(whereis ctags) | awk -F':' '{print NF-1}'`
+need_install_ctags=`echo $(which ctags) | awk -F'ctags' '{print NF-1}'`
 
-if [[ $need_install_ctags -eq 0 ]]; then
+if [[ $need_install_ctags -eq -1 ]]; then
   echo 'Need INSTALL ctags'
   if [[ "$(uname)" == "Darwin" ]];then
   # Mac OS X 操作系统

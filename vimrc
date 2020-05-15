@@ -1,5 +1,5 @@
 
-set nu
+set nonu
 set background=dark
 syntax on
 
