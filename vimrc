@@ -16,7 +16,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
-Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
