@@ -15,7 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 "在此增加其他插件，安装的插件需要放在vundle#begin和vundle#end之间"
 "安装github上的插件格式为 Plugin '用户名/插件仓库名'"
 
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+.
+"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 Plugin 'tpope/vim-fugitive'
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
