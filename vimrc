@@ -1,3 +1,24 @@
+set nocompatible               "去除VIM一致性，必须"
+filetype off                   "必须"
+
+"设置包括vundle和初始化相关的运行时路径"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"启用vundle管理插件，必须"
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'Valloric/YouCompleteMe',{'do':'python3 install.py --all'}
+
+"在此增加其他插件，安装的插件需要放在vundle#begin和vundle#end之间"
+"安装github上的插件格式为 Plugin '用户名/插件仓库名'"
+"Plugin 'file:///home/gmarik/path/to/plugin'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()            " required
+filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
+
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 set nonu
 set background=dark

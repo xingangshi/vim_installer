@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd `dirname $0`
-cp -rf vimrc ~/.vimrc -f
+cp -rf vimrc ~/.vimrc
 
 mkdir -p ~/tags
 cp -rf common_tags/* ~/tags
@@ -32,6 +32,8 @@ if [[ $need_install_ctags -eq -1 ]]; then
     echo "Windows NT, please install ctags yourself !"
   fi
 fi
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo 'Install done ! Please enjoy Vim.'
 
