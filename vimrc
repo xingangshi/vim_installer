@@ -10,15 +10,15 @@ call vundle#begin()
 
 "启用vundle管理插件，必须"
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe',{'do':'python3 install.py --all'}
 
 "在此增加其他插件，安装的插件需要放在vundle#begin和vundle#end之间"
 "安装github上的插件格式为 Plugin '用户名/插件仓库名'"
 
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 Plugin 'tpope/vim-fugitive'
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
+" 开启 YouCompleteMe 安装，去掉下面一行的注释
+"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"

@@ -33,12 +33,17 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 3. 执行 2.1.1 或 2.1.2 命令
 
 ### 3 安装 [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 插件
-> **YouCompleteMe 基本配置要求**： 1. vim 7.4.1578+ 2. python3
+> **YouCompleteMe 为选配，基本配置要求**： 1. vim 7.4.1578+ 2. python3
 
-1. `$ vim`；
-2. vim 中输入 `:PluginInstall` 安装配置好的 vim 插件的，包括 YouCompleteMe；
-3. `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh --all`；
-4. 重启 Terminal 即可。
+1. 开启 `.vimrc` 文件的配置 YouCompleteMe 插件安装配置：
+> 打开修改 `$ vim ~/.vimrc` 文件；
+> 去掉 21 行注释 `"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3"。
+
+2. 通过 [Vundle](https://github.com/VundleVim/Vundle.vim) 安装 YouCompleteMe 插件
+>  打开 vim，`$ vim`；
+>  vim 中输入 `:PluginInstall` 安装配置好的 vim 插件的，包括 YouCompleteMe；
+>  编译 YouComplete 插件，`$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh --all`；
+>  重启 vim 让配置生效。
 
 ### 4. 版本说明
 1. v1.0 初始化。
