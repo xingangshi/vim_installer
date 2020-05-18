@@ -1,3 +1,6 @@
+let $LANG = 'en'  "设置英文 
+set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的  
+
 set nocompatible               "去除VIM一致性，必须"
 filetype off                   "必须"
 
