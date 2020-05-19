@@ -1,5 +1,5 @@
-let $LANG = 'en'  "设置英文 
-set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的  
+let $LANG = 'en'  "设置英文
+set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的
 
 set nocompatible               "去除VIM一致性，必须"
 filetype off                   "必须"
@@ -65,6 +65,7 @@ set list
 "paste module
 set pastetoggle=<F11>
 set tabstop=2
+set noexpandtab
 
 set encoding=utf-8
 
@@ -97,6 +98,8 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 augroup filetype
 au! BufRead,BufNewFile *.proto set filetype=proto
 au! BufRead,BufNewFile *.txt,*.INFO,*.ERROR,*.WARNING set filetype=python
+au! BufRead,BufNewFile CMakeLists.txt set filetype=cmake
+au! BufRead,BufNewFile *.rs set filetype=rust
 au! BufRead,BufNewFile SConstruct,SConscript set filetype=python
 augroup end
 
@@ -131,10 +134,10 @@ inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDow
 inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 "youcompleteme 默认tab s-tab 和自动补全冲突
-"let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_select_completion=['<c-]>']
+"let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion=['<c-[>']
+"let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
 
 let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
