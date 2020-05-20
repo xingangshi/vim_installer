@@ -7,6 +7,7 @@ filetype off                   "必须"
 "设置包括vundle和初始化相关的运行时路径"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+set rtp+=~/.vim/bundle/ctrlp.vim
 
 "启用vundle管理插件，必须"
 Plugin 'VundleVim/Vundle.vim'
@@ -17,8 +18,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'mileszs/ack.vim'
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
+" Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
@@ -134,10 +137,10 @@ inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDow
 inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 "youcompleteme 默认tab s-tab 和自动补全冲突
-let g:ycm_key_list_select_completion=['<c-]>']
-"let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion=['<c-[>']
-"let g:ycm_key_list_previous_completion = ['<Up>']
+"let g:ycm_key_list_select_completion=['<c-]>']
+let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion=['<c-[>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
 
 let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
@@ -163,3 +166,12 @@ let Tlist_WinWidt =28 "设置taglist的宽度
 let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window=1 "在右侧窗口中显示taglist窗口
 let Tlist_Use_Left_Windo =1 "在左侧窗口中显示taglist窗口
+
+
+" Ctrlp setting
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows

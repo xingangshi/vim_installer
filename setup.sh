@@ -33,7 +33,13 @@ if [[ $need_install_ctags -eq -1 ]]; then
   fi
 fi
 
+echo "Install vim Plugin - Vundle"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+echo "Install vim Plugin - ctrlp"
+git clone https://github.com/kien/ctrlp.vim.git       ~/.vim/bundle/ctrlp.vim
+
+PLugin 'ctrlp.vim'
 
 echo 'Install done ! Please enjoy Vim.'
 
