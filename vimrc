@@ -21,10 +21,24 @@ Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'mileszs/ack.vim'
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
-" Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
+"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
+
+" for flutter
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'thosakwe/vim-flutter'
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
+
+autocmd FileType dart :call FlutterMenu()
+
+" Some of these key choices were arbitrary;
+" it's just an example.
+nnoremap <leader>fa :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
 
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
@@ -168,10 +182,12 @@ let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一个窗口，则退�
 let Tlist_Use_Left_Windo =1 "在左侧窗口中显示taglist窗口
 
 
-" Ctrlp setting
+" Ctrlp setting 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+
