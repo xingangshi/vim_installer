@@ -54,3 +54,14 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 ### 4. 版本说明
 1. v1.0 初始化。
 2. v2.0 增加默认安装 [Vundle](https://github.com/VundleVim/Vundle.vim) 管理 vim 插件，增加选配插件  [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 的安装。
+
+### 备注
+#### Error-1 : 
+```
+YouCompleteMe unavailable: requires Vim compiled with Python (3.5.1+) support.
+Press ENTER or type command to continue
+```
+> `$apt install vim-gtk `
+
+#### Python3.5 Needed!!
+> [Python 3.7 install](https://raw.githubusercontent.com/xingangshi/config_tools/master/000_gists_bak/python3_install.sh)
