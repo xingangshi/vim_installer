@@ -65,3 +65,13 @@ Press ENTER or type command to continue
 
 #### Python3.5 Needed!!
 > [Python 3.7 install](https://raw.githubusercontent.com/xingangshi/config_tools/master/000_gists_bak/python3_install.sh)
+
+#### Error-2 :
+假如选择安装 YouComplete， 在 vim 界面执行 `:PluinInstall` 可能会报如下的错误
+```
+:PluginSearcherver SHUT DOWN (restart with ':YcmRestartServer'). YCM core library not detected; you need to compile YCM before using it. Follow the instructions in the document
+```
+##### 解决方案：
+> 退出 vim，执行以命令 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh` 或者 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh --all`
+>
+> 确保以上命令执行没有报错的情况下，执行 `$vim` 进入 vim 不报错，即可。
