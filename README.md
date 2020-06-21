@@ -54,3 +54,24 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 ### 4. 版本说明
 1. v1.0 初始化。
 2. v2.0 增加默认安装 [Vundle](https://github.com/VundleVim/Vundle.vim) 管理 vim 插件，增加选配插件  [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 的安装。
+
+### 备注
+#### Error-1 : 
+```
+YouCompleteMe unavailable: requires Vim compiled with Python (3.5.1+) support.
+Press ENTER or type command to continue
+```
+> `$apt install vim-gtk `
+
+#### Python3.5 Needed!!
+> [Python 3.7 install](https://raw.githubusercontent.com/xingangshi/config_tools/master/000_gists_bak/python3_install.sh)
+
+#### Error-2 :
+假如选择安装 YouComplete， 在 vim 界面执行 `:PluinInstall` 可能会报如下的错误
+```
+:PluginSearcherver SHUT DOWN (restart with ':YcmRestartServer'). YCM core library not detected; you need to compile YCM before using it. Follow the instructions in the document
+```
+##### 解决方案：
+> 退出 vim，执行以命令 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh` 或者 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh --all`
+>
+> 确保以上命令执行没有报错的情况下，执行 `$vim` 进入 vim 不报错，即可。
