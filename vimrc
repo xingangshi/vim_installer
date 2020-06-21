@@ -20,12 +20,15 @@ Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'mileszs/ack.vim'
-" 开启 YouCompleteMe 安装，去掉下面一行的注释
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
-
-" for flutter
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
+
+" 开启 YouCompleteMe 安装，去掉下面一行的注释
+Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
+" 可选插件 pandoc-vim
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-latex/vim-latex'
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
