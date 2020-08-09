@@ -30,6 +30,11 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-latex/vim-latex'
 
+" vim org mode
+Plugin 'jced/vim-orgmode'
+Plugin 'calendar-vim'
+Plugin 'tpope/Speeddating'
+
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
 
@@ -193,4 +198,9 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
+"vim orgmode
+packloadall
+silent! hellptags ALL
+let g:org_agenda_files=['~/self/org/orgmode.org']
+let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|', 'DONE', 'DELEGATED']
 
