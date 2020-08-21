@@ -89,8 +89,14 @@ set listchars=tab:>-,trail:%
 set list
 "paste module
 set pastetoggle=<F11>
-set tabstop=2
-set noexpandtab
+"设定 tab 宽度为 4 个字符
+set tabstop=4
+"设定自动缩进为 4 个字符
+set shiftwidth=4
+"用 space 替代 tab 的输入
+set expandtab
+"不用 space 替代 tab 的输入
+"set noexpandtab
 
 set encoding=utf-8
 
