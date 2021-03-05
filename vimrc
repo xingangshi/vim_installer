@@ -20,6 +20,7 @@ Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'mileszs/ack.vim'
+
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
 "Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 
@@ -30,6 +31,16 @@ Plugin 'thosakwe/vim-flutter'
 " for rust
 Plugin 'rust-lang/rust.vim'
 let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.41.1/src'
+
+" 可选插件 pandoc-vim
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-latex/vim-latex'
+
+" vim org mode
+Plugin 'jced/vim-orgmode'
+Plugin 'calendar-vim'
+Plugin 'tpope/Speeddating'
 
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
@@ -85,8 +96,14 @@ set listchars=tab:>-,trail:%
 set list
 "paste module
 set pastetoggle=<F11>
-set tabstop=2
-set noexpandtab
+"设定 tab 宽度为 4 个字符
+set tabstop=4
+"设定自动缩进为 4 个字符
+set shiftwidth=4
+"用 space 替代 tab 的输入
+set expandtab
+"不用 space 替代 tab 的输入
+"set noexpandtab
 
 set encoding=utf-8
 
@@ -186,7 +203,7 @@ let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一个窗口，则退�
 let Tlist_Use_Left_Windo =1 "在左侧窗口中显示taglist窗口
 
 
-" Ctrlp setting 
+" Ctrlp setting
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -194,4 +211,9 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
+"vim orgmode
+packloadall
+silent! hellptags ALL
+let g:org_agenda_files=['~/self/org/orgmode.org']
+let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|', 'DONE', 'DELEGATED']
 
