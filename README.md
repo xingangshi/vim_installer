@@ -64,6 +64,13 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 >
 > 3.2 打开 `~/.vimrc` 添加源码路径，`let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.41.1/src'`
 
+
+### Notes
+
+#### 1. YouCompleteMe vim扩展：如何跳转到下一个错误.
+> 在 `~/.vimrc` 配置了 `let g:ycm_always_populate_location_list = 1`，YouCompleteMe 将使用新的诊断数据填充 vims 位置列表。可以使用 `:lnext` 和跳过该列表中的条目 `:lprevious`。
+
+
 ### 版本说明
 1. v1.0 初始化。
 2. v2.0 增加默认安装 [Vundle](https://github.com/VundleVim/Vundle.vim) 管理 vim 插件，增加选配插件  [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 的安装。
