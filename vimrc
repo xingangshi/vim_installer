@@ -27,6 +27,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
 
+" for rust
+Plugin 'rust-lang/rust.vim'
+let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.41.1/src'
+
 call vundle#end()            " required
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
 

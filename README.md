@@ -44,19 +44,32 @@ git clone https://github.com/XingangShi/vim_installer.git && cd vim_installer &&
 >
 >  重启 vim 让配置生效。
 
-#### 4. 兼容一些低版本的 Linux 系统和 VIm
+### 4. 兼容一些低版本的 Linux 系统和 VIm
 > 假如你在按照以上的过程中，由于配置导致 vim 出现起不来的错误，可以用低版本的配置去覆盖
 >
 > `$ cd _low_version && bash setup.sh`
 >
 > 安装过程中选择 `yes` 覆盖原有的配置即可。
 
-### 4. 版本说明
+### 5. YouCompleteMe 添加 Rust 自动补全
+1. 安装 Vundle 后，打开 `~/.vimrc` 添加 `Plugin 'Valloric/YouCompleteMe'`，然后打开 vim 执行 `:PluginInstall`
+>
+> 更新 YouCompleteMe 使用 `:PluginUpdate`。
+
+2. 支持 rust 语法  `cd ~/.vim/bundle/YouCompleteMe && ./install.py --racer-completer`
+
+3. 下载安装与 `rustc --version` 版本一致的源代码到本地目录 `/usr/local/` 下，并添加引用
+>
+> 3.1 下载 rust 源码并解压 ` mkdir -p /usr/local/rust && cd /usr/local/rust &&  wget https://github.com/rust-lang/rust/archive/1.41.1.tar.gz && tar -zxvf 1.41.1.tar.gz && rm -rf 1.41.1.tar.gz`
+>
+> 3.2 打开 `~/.vimrc` 添加源码路径，`let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.41.1/src'`
+
+### 版本说明
 1. v1.0 初始化。
 2. v2.0 增加默认安装 [Vundle](https://github.com/VundleVim/Vundle.vim) 管理 vim 插件，增加选配插件  [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 的安装。
 
 ### 备注
-#### Error-1 : 
+#### Error-1 :
 ```
 YouCompleteMe unavailable: requires Vim compiled with Python (3.5.1+) support.
 Press ENTER or type command to continue
