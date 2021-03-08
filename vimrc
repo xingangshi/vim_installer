@@ -30,7 +30,7 @@ Plugin 'thosakwe/vim-flutter'
 
 " for rust
 Plugin 'rust-lang/rust.vim'
-let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.41.1/src'
+let g:ycm_rust_src_path = '~/self/rust/rust-1.50.0/src/'
 
 " 可选插件 pandoc-vim
 Plugin 'vim-pandoc/vim-pandoc'
@@ -38,11 +38,14 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-latex/vim-latex'
 
 " vim org mode
-Plugin 'jced/vim-orgmode'
-Plugin 'calendar-vim'
-Plugin 'tpope/Speeddating'
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-speeddating'
+Plugin 'mattn/calendar-vim'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
+
+syntax enable
 filetype plugin indent on      "加载vim自带和插件相应的语法和文件类型相关脚本，必须"
 
 autocmd FileType dart :call FlutterMenu()
