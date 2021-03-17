@@ -1,6 +1,8 @@
 let $LANG = 'en'  "设置英文
 set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的
 
+set guifont=Sarasa\ Mono\ SC
+
 set nocompatible               "去除VIM一致性，必须"
 filetype off                   "必须"
 
@@ -20,6 +22,8 @@ Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'nathangrigg/vim-beancount'
 
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
 "Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
@@ -28,8 +32,11 @@ Plugin 'mileszs/ack.vim'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
 
+Plugin 'iamcco/markdown-preview.nvim'
+
 " for rust
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rust-lang/rust.vim'
+let g:ycm_semantic_triggers={'c,cpp,python,rust,java,go,erlang,perl,cs,lua,javascript':['re!\w{2}']}
 let g:ycm_rust_src_path = '~/self/rust/rust-1.50.0/src/'
 
 " 可选插件 pandoc-vim
@@ -42,6 +49,14 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
 Plugin 'mattn/calendar-vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'skywind3000/vim-rt-format', { 'do': 'pip3 install autopep8' }
+
+let g:rtf_ctrl_enter = 0
+
+" Enable formatting when leaving insert mode
+let g:rtf_on_insert_leave = 1
+
+set nofoldenable
 
 call vundle#end()            " required
 
