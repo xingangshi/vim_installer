@@ -25,8 +25,19 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'nathangrigg/vim-beancount'
 
+Plugin 'preservim/nerdtree' |
+            \ Plugin 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plugin 'ryanoasis/vim-devicons'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'liuchengxu/eleline.vim'
+
+Plugin 'powerline/powerline'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
+" Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 
 " for flutter
 Plugin 'dart-lang/dart-vim-plugin'
@@ -57,6 +68,32 @@ let g:rtf_ctrl_enter = 0
 let g:rtf_on_insert_leave = 1
 
 set nofoldenable
+
+"set laststatus=2
+set encoding=UTF-8
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+
+let g:NERDTreeGitStatusPorcelainVersion = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1
+" let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+let g:NERDTreeGitStatusShowClean = 1
+let g:NERDTreeGitStatusConcealBrackets = 0
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'-',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 call vundle#end()            " required
 
