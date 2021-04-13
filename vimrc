@@ -25,9 +25,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'nathangrigg/vim-beancount'
 
-Plugin 'preservim/nerdtree' |
-            \ Plugin 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plugin 'ryanoasis/vim-devicons'
+Plugin 'preservim/nerdtree'
+            \ | Plugin 'Xuyuanp/nerdtree-git-plugin'
+"            \ | Plugin 'ryanoasis/vim-devicons'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'liuchengxu/eleline.vim'
 
@@ -83,15 +83,15 @@ let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 0
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
+                \ 'Modified'  :'!',
+                \ 'Staged'    :'+',
+                \ 'Untracked' :'u',
+                \ 'Renamed'   :'*',
+                \ 'Unmerged'  :'=',
+                \ 'Deleted'   :'x',
+                \ 'Dirty'     :'|',
                 \ 'Ignored'   :'-',
-                \ 'Clean'     :'✔︎',
+                \ 'Clean'     :'.',
                 \ 'Unknown'   :'?',
                 \ }
 
