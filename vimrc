@@ -42,7 +42,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " for flutter
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 
 Plugin 'iamcco/markdown-preview.nvim'
 
