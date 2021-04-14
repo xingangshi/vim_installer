@@ -42,6 +42,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " for flutter
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
+Plugin 'davidhalter/jedi-vim'
 
 Plugin 'iamcco/markdown-preview.nvim'
 
@@ -73,12 +74,15 @@ set nofoldenable
 set encoding=UTF-8
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_alt_sep = '_'
 let g:airline#extensions#tabline#formatter = 'default'
+
+let g:airline#extensions#statusline#top = 0
+let g:airline_statusline_ontop=0
 
 let g:NERDTreeGitStatusPorcelainVersion = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
-" let g:NERDTreeGitStatusShowIgnored = 1
+"let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 0
