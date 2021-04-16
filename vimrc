@@ -4,7 +4,6 @@ set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的
 set guifont=Sarasa\ Mono\ SC
 
 set nocompatible               "去除VIM一致性，必须"
-filetype off                   "必须"
 
 "设置包括vundle和初始化相关的运行时路径"
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -67,6 +66,8 @@ let g:rtf_ctrl_enter = 0
 
 " Enable formatting when leaving insert mode
 let g:rtf_on_insert_leave = 1
+
+let g:ctrlp_user_command = 'find %s -type f'
 
 set nofoldenable
 
@@ -139,7 +140,6 @@ let Tlist_Show_One_File=1
 
 "omnicppcomplete
 set nocp
-filetype plugin on
 let g:OmniCpp_GlobalScopeSearch = 1
 let g:OmniCpp_NamespaceSearch = 1
 
@@ -150,7 +150,6 @@ color molokai
 "ctags
 "map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  .<CR> <Esc>:set tags+=./tags <CR>
 
-filetype indent on
 "set path+=/usr/include
 set listchars=tab:>-,trail:%
 set list
