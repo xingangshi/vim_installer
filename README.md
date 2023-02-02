@@ -97,3 +97,38 @@ Press ENTER or type command to continue
 > 退出 vim，执行以命令 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh` 或者 `$ cd ~/.vim/bundle/YouCompleteMe && bash install.sh --all`
 >
 > 确保以上命令执行没有报错的情况下，执行 `$vim` 进入 vim 不报错，即可。
+
+#### Vim 安装编译
+```
+apt-get build-dep vim-gtk
+apt-get install libncurses5-dev mercurial
+
+git clone https://github.com/vim/vim.git
+cd vim
+make distclean
+
+cd vim &&
+echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h &&
+echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h &&
+./configure --prefix=/usr/local/vim8 --with-features=huge \
+            --enable-multibyte --enable-fontset --enable-xim \
+            --enable-pythoninterp --enable-perlinterp \
+            --enable-python3interp \
+            --enable-rubyinterp --enable-luainterp \
+            --enable-cscope --enable-sniff \
+            --enable-gui=gtk2 \
+            --with-compiledby="busor" &&
+make &&
+make install
+
+n -s /usr/local/vim8/bin/vim /usr/local/bin/vim &&
+ln -s /usr/local/vim8/bin/vimtutor /usr/local/bin/vimtutor &&
+ln -s /usr/local/vim8/bin/gvimtutor /usr/local/bin/gvimtutor &&
+ln -s /usr/local/vim8/bin/xxd /usr/local/bin/xxd &&
+ln -s vim /usr/local/bin/vi &&
+ln -s vim /usr/local/bin/view &&
+ln -s vim /usr/local/bin/vimdiff &&
+ln -s vim /usr/local/bin/gvimdiff &&
+ln -s vim /usr/local/bin/gview &&
+ln -s vim /usr/local/bin/gvim
+```
