@@ -63,6 +63,11 @@ Plugin 'mattn/calendar-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'skywind3000/vim-rt-format', { 'do': 'pip3 install autopep8' }
 
+set wildignore+=*.swp,*.bak,*.pyc,*.class,.svn
+
+" 过滤所有.pyc文件不显示
+let NERDTreeIgnore = [".pyc$"]
+
 let g:rtf_ctrl_enter = 0
 
 " Enable formatting when leaving insert mode
