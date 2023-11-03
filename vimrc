@@ -23,6 +23,9 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'nathangrigg/vim-beancount'
+Plugin 'dkprice/vim-easygrep'
+Plugin 'airblade/vim-gitgutter'
+
 
 Plugin 'preservim/nerdtree'
             \ | Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -34,22 +37,35 @@ Plugin 'powerline/powerline'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" colors
+Plugin 'mhartington/oceanic-next'
+Plugin 'yuttie/hydrangea-vim'
+Plugin 'liuchengxu/space-vim-theme'
+
 
 " 开启 YouCompleteMe 安装，去掉下面一行的注释
-"Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+Plugin 'Valloric/YouCompleteMe' "YouCompleteMe requires Vim 7.4.1578+, python3
 
 " for flutter
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'thosakwe/vim-flutter'
 "Plugin 'davidhalter/jedi-vim'
 
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+
+"for markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'
 
 " for rust
-"Plugin 'rust-lang/rust.vim'
+
+Plugin 'rust-lang/rust.vim'
+Plugin 'neoclide/coc.nvim', {'branch': 'master'}
+Plugin 'dense-analysis/ale'
 let g:ycm_semantic_triggers={'c,cpp,python,rust,java,go,erlang,perl,cs,lua,javascript':['re!\w{2}']}
-let g:ycm_rust_src_path = '~/self/rust/rust-1.50.0/src/'
+let g:ycm_rust_src_path = '~/self/rust/rust-1.70.0/src/'
 
 " 可选插件 pandoc-vim
 Plugin 'vim-pandoc/vim-pandoc'
@@ -62,11 +78,6 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'mattn/calendar-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'skywind3000/vim-rt-format', { 'do': 'pip3 install autopep8' }
-
-set wildignore+=*.swp,*.bak,*.pyc,*.class,.svn
-
-" 过滤所有.pyc文件不显示
-let NERDTreeIgnore = [".pyc$"]
 
 let g:rtf_ctrl_enter = 0
 
@@ -121,6 +132,7 @@ nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 
 set nonu
@@ -149,7 +161,15 @@ let g:OmniCpp_GlobalScopeSearch = 1
 let g:OmniCpp_NamespaceSearch = 1
 
 "color
+
 color molokai
+let g:rehash256 = 1
+"let g:molokai_original = 0
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+set t_Co=256
+set background=dark
+set tabstop=4
 "set t_Co=256
 
 "ctags
@@ -272,6 +292,11 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
+nmap <C-l> :Files<CR>
+nmap <C-k> :Buffers<CR>
+nmap <C-o> :RG<CR>
+let g:fzf_action = { 'ctrl-e': 'edit' }
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
@@ -281,3 +306,77 @@ silent! hellptags ALL
 let g:org_agenda_files=['~/self/org/orgmode.org']
 let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|', 'DONE', 'DELEGATED']
 
+
+color Hydrangea
+
+syntax on
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+color OceanicNext
+color molokai
+color OceanicNext
+
+
+"for rust
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+let g:fzf_layout = { 'down': '25%' }
+
+colorscheme OceanicNext
+
+set updatetime=300 "每300秒 git检查一次"
+
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '-'
+let g:gitgutter_sign_removed = '*'
+let g:gitgutter_sign_removed_first_line = '_'
+let g:gitgutter_sign_removed_above_and_below = '>'
+let g:gitgutter_sign_modified_removed = '<'
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+syntax enable
+filetype plugin indent on
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+                  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+      let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('nvim')
+      inoremap <silent><expr> <c-space> coc#refresh()
+else
+      inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
