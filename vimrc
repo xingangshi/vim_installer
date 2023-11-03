@@ -60,7 +60,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'
 
 " for rust
-
 Plugin 'rust-lang/rust.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'master'}
 Plugin 'dense-analysis/ale'
@@ -161,8 +160,6 @@ let g:OmniCpp_GlobalScopeSearch = 1
 let g:OmniCpp_NamespaceSearch = 1
 
 "color
-
-color molokai
 let g:rehash256 = 1
 "let g:molokai_original = 0
 highlight NonText guibg=#060606
@@ -292,8 +289,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
-nmap <C-l> :Files<CR>
-nmap <C-k> :Buffers<CR>
+nmap <C-u> :Files<CR>
+nmap <C-i> :Buffers<CR>
 nmap <C-o> :RG<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
 
@@ -306,16 +303,9 @@ silent! hellptags ALL
 let g:org_agenda_files=['~/self/org/orgmode.org']
 let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|', 'DONE', 'DELEGATED']
 
-
-color Hydrangea
-
 syntax on
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-color OceanicNext
-color molokai
-color OceanicNext
-
 
 "for rust
 let g:rustfmt_autosave = 1
@@ -333,14 +323,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
 let g:fzf_layout = { 'down': '25%' }
 
+colorscheme molokai
+colorscheme Hydrangea
 colorscheme OceanicNext
 
 set updatetime=300 "每300秒 git检查一次"
@@ -376,7 +362,7 @@ else
       inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gf <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
