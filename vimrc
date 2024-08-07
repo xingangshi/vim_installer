@@ -1,9 +1,12 @@
 let $LANG = 'en'  "设置英文
 set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的
+set autowriteall
 
 set guifont=Sarasa\ Mono\ SC
+"set guifont=Nerd\ Fonts
 
 set nocompatible               "去除VIM一致性，必须"
+set encoding=UTF-8
 
 "设置包括vundle和初始化相关的运行时路径"
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -16,7 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 "在此增加其他插件，安装的插件需要放在vundle#begin和vundle#end之间"
 "安装github上的插件格式为 Plugin '用户名/插件仓库名'"
 
-Plugin 'tpope/vim-fugitive'
+"Plugin 'ms-jpq/chadtree' ", {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
@@ -26,10 +30,17 @@ Plugin 'nathangrigg/vim-beancount'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'cwshugg/argonaut.vim'
+Plugin 'cwshugg/fops.vim'
+
+Plugin 'jreybert/vimagit'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-rhubarb'
 
 Plugin 'preservim/nerdtree'
             \ | Plugin 'Xuyuanp/nerdtree-git-plugin'
-"            \ | Plugin 'ryanoasis/vim-devicons'
+            \ | Plugin 'ryanoasis/vim-devicons'
+
 Plugin 'kien/ctrlp.vim'
 "Plugin 'liuchengxu/eleline.vim'
 
@@ -63,8 +74,7 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'master'}
 Plugin 'dense-analysis/ale'
-let g:ycm_semantic_triggers={'c,cpp,python,rust,java,go,erlang,perl,cs,lua,javascript':['re!\w{2}']}
-let g:ycm_rust_src_path = '~/self/rust/rust-1.70.0/src/'
+
 
 " 可选插件 pandoc-vim
 Plugin 'vim-pandoc/vim-pandoc'
@@ -83,12 +93,9 @@ let g:rtf_ctrl_enter = 0
 " Enable formatting when leaving insert mode
 let g:rtf_on_insert_leave = 1
 
-let g:ctrlp_user_command = 'find %s -type f'
-
 set nofoldenable
 
 "set laststatus=2
-set encoding=UTF-8
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '_'
@@ -102,20 +109,19 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 "let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 let g:NERDTreeGitStatusShowClean = 1
-let g:NERDTreeGitStatusConcealBrackets = 0
+let g:NERDTreeGitStatusConcealBrackets = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'!',
-                \ 'Staged'    :'+',
-                \ 'Untracked' :'u',
-                \ 'Renamed'   :'*',
-                \ 'Unmerged'  :'=',
-                \ 'Deleted'   :'x',
-                \ 'Dirty'     :'|',
-                \ 'Ignored'   :'-',
-                \ 'Clean'     :'.',
-                \ 'Unknown'   :'?',
-                \ }
-
+                    \ 'Modified'  :'✹',
+                    \ 'Staged'    :'✚',
+                    \ 'Untracked' :'✭',
+                    \ 'Renamed'   :'➜',
+                    \ 'Unmerged'  :'═',
+                    \ 'Deleted'   :'✖',
+                    \ 'Dirty'     :'✗',
+                    \ 'Ignored'   :'☒',
+                    \ 'Clean'     :'✔︎',
+                    \ 'Unknown'   :'?',
+                    \ }
 call vundle#end()            " required
 
 syntax enable
@@ -131,6 +137,8 @@ nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 
+let g:ycm_semantic_triggers={'c,cpp,python,rust,java,go,erlang,perl,cs,lua,javascript':['re!\w{2}']}
+let g:ycm_rust_src_path = '~/self/rust/rust-1.70.0/src/'
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 
@@ -186,8 +194,6 @@ set expandtab
 "不用 space 替代 tab 的输入
 "set noexpandtab
 
-set encoding=utf-8
-
 set laststatus=2
 
 "第80行之后高亮显示
@@ -222,11 +228,12 @@ au! BufRead,BufNewFile *.rs set filetype=rust
 au! BufRead,BufNewFile SConstruct,SConscript set filetype=python
 augroup end
 
+"NERD_tree
 noremap <F2> <ESC>:TlistToggle<CR>
 inoremap <C-F2> <ESC>:TlistToggle<CR>
-"NERD_tree
 noremap <F3> <ESC>:NERDTreeToggle<CR>
 inoremap <F3> <ESC>:NERDTreeToggle<CR>
+
 "switch h, cc
 noremap <leader>av :AV<CR>
 
@@ -243,7 +250,11 @@ execute "set tags+=" . system("ls -l ~/tags/ | grep -v ^total | awk 'BEGIN{a=\"\
 
 
 "自动补全配置
-set completeopt=longest,menu "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+" As-you-type autocomplete
+"set completeopt=longest,menu "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines']  }
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" "回车即选中当前项
 "上下左右键的行为 会显示其他信息
@@ -283,15 +294,24 @@ let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一个窗口，则退�
 "let Tlist_Use_Right_Window=1 "在右侧窗口中显示taglist窗口
 let Tlist_Use_Left_Windo =1 "在左侧窗口中显示taglist窗口
 
-
 " Ctrlp setting
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<space>m'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$' " MacOSX/Linux
+"set wildignore+=*tmp*,*.swp,*.zip,*.exe  " Windows
+"let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+"let g:ctrlp_custom_ignore = {
+"      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"      \ 'file': '\v\.(exe|so|dll)$',
+"      \ 'link': 'some_bad_symbolic_links',
+"      \} " Windows
 
-nmap <C-u> :Files<CR>
-nmap <C-i> :Buffers<CR>
-nmap <C-o> :RG<CR>
+nmap <C-i> :Files<CR>
+nmap <C-h> :Buffers<CR>
+nmap <C-k> :RG<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
@@ -307,7 +327,7 @@ syntax on
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
-"for rust
+"for rust start
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
@@ -323,7 +343,40 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:fzf_layout = { 'down': '25%' }
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gf <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr> <c-@> coc#refresh()
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+"for rust end
+
+let g:fzf_layout = { 'down': '40%' }
 
 colorscheme molokai
 colorscheme Hydrangea
@@ -338,31 +391,15 @@ let g:gitgutter_sign_removed_first_line = '_'
 let g:gitgutter_sign_removed_above_and_below = '>'
 let g:gitgutter_sign_modified_removed = '<'
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
-
 syntax enable
 filetype plugin indent on
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-                  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+nmap <C-m> <Cmd>CocCommand explorer<CR>
 
-function! s:check_back_space() abort
-      let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+hi CocMenuSel guifg=#cccccc guibg=#2a3d75
 
-if has('nvim')
-      inoremap <silent><expr> <c-space> coc#refresh()
-else
-      inoremap <silent><expr> <c-@> coc#refresh()
+
+if has("termguicolors")
+    " enable true color
+    set termguicolors
 endif
-
-nmap <silent> gf <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
