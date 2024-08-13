@@ -21,6 +21,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugin 'ms-jpq/chadtree' ", {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
+Plugin 'xingangshi/vim-base-plugin'
+
 Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'rizzatti/dash.vim'
@@ -104,9 +106,21 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#statusline#top = 0
 let g:airline_statusline_ontop=0
 
+"NERD_tree
+noremap <F2> <ESC>:TlistToggle<CR>
+inoremap <C-F2> <ESC>:TlistToggle<CR>
+noremap <F3> <ESC>:NERDTreeToggle<CR>
+inoremap <C-F3> <ESC>:NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+let g:NERDTreeMapJumpNextSibling = get(g:, 'NERDTreeMapJumpNextSibling', '<S-j>')
+let g:NERDTreeMapJumpPrevSibling = get(g:, 'NERDTreeMapJumpPrevSibling', '<S-k>')
+
+"let g:NERDTreeFileLines = 1
+let g:NERDTreeShowHidden=1
 let g:NERDTreeGitStatusPorcelainVersion = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
-"let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
@@ -227,12 +241,6 @@ au! BufRead,BufNewFile CMakeLists.txt set filetype=cmake
 au! BufRead,BufNewFile *.rs set filetype=rust
 au! BufRead,BufNewFile SConstruct,SConscript set filetype=python
 augroup end
-
-"NERD_tree
-noremap <F2> <ESC>:TlistToggle<CR>
-inoremap <C-F2> <ESC>:TlistToggle<CR>
-noremap <F3> <ESC>:NERDTreeToggle<CR>
-inoremap <F3> <ESC>:NERDTreeToggle<CR>
 
 "switch h, cc
 noremap <leader>av :AV<CR>
@@ -378,9 +386,9 @@ endif
 
 let g:fzf_layout = { 'down': '40%' }
 
-colorscheme molokai
-colorscheme Hydrangea
 colorscheme OceanicNext
+colorscheme Hydrangea
+colorscheme molokai
 
 set updatetime=300 "每300秒 git检查一次"
 
