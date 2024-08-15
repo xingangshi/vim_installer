@@ -1,6 +1,7 @@
 let $LANG = 'en'  "设置英文
 set langmenu=en   "设置 gvim 为英文，注意 = 两边没有空格的
 set autowriteall
+set shell=sh
 
 set guifont=Sarasa\ Mono\ SC
 "set guifont=Nerd\ Fonts
@@ -39,9 +40,10 @@ Plugin 'jreybert/vimagit'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'tpope/vim-rhubarb'
 
+"Plugin 'Xuyuanp/git-nerdtree'
 Plugin 'preservim/nerdtree'
-            \ | Plugin 'Xuyuanp/nerdtree-git-plugin'
             \ | Plugin 'ryanoasis/vim-devicons'
+            \ | Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'kien/ctrlp.vim'
 "Plugin 'liuchengxu/eleline.vim'
@@ -97,7 +99,6 @@ let g:rtf_on_insert_leave = 1
 
 set nofoldenable
 
-"set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '_'
@@ -117,7 +118,8 @@ let g:NERDTreeMapJumpNextSibling = get(g:, 'NERDTreeMapJumpNextSibling', '<S-j>'
 let g:NERDTreeMapJumpPrevSibling = get(g:, 'NERDTreeMapJumpPrevSibling', '<S-k>')
 
 "let g:NERDTreeFileLines = 1
-let g:NERDTreeShowHidden=1
+let g:NERDTreeModifiable = 1
+let g:NERDTreeShowHidden = 1
 let g:NERDTreeGitStatusPorcelainVersion = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusShowIgnored = 1
@@ -188,7 +190,6 @@ highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set t_Co=256
 set background=dark
-set tabstop=4
 "set t_Co=256
 
 "ctags
@@ -199,18 +200,26 @@ set listchars=tab:>-,trail:%
 set list
 "paste module
 set pastetoggle=<F11>
-"设定 tab 宽度为 4 个字符
-set tabstop=4
-"设定自动缩进为 4 个字符
-set shiftwidth=4
+
+
+filetype indent plugin on
 "用 space 替代 tab 的输入
 set expandtab
 "不用 space 替代 tab 的输入
 "set noexpandtab
+"设定 tab 宽度为 4 个字符
+set tabstop=4
+"设置软缩进的宽度为 4 个空格
+set softtabstop=4
+"设定自动缩进为 4 个字符
+set shiftwidth=4
+set smartindent
+set autoindent
+set cindent
 
-set laststatus=2
+au Filetype python setlocal ts=4 sts=4 sw=4
 
-"第80行之后高亮显示
+"第 80 行之后高亮显示
 hi LineTooLong ctermfg=223
 au BufWinEnter *.py,*.h,*.cc let w:m1=matchadd('Search', '\%>79v', -1)
 au BufWinEnter *.py,*.h,*.cc let w:m2=matchadd('LineTooLong', '\%>79v.\+', -1)
@@ -293,6 +302,8 @@ let g:ycm_complete_in_strings = 1
 "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 
+nnoremap <leader>jl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 
 let Tlist_Ctags_Cmd='ctags'
