@@ -76,9 +76,23 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
+Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'qadzek/link.vim'
+
+let g:link_enabled_filetypes = ['markdown', 'gitcommit']
 
 let g:polyglot_disabled = ['markdown']
+
+let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
+"let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_open = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
 
 " Filetype names and aliases for fenced code blocks.
 let g:vim_markdown_fenced_languages = ['php', 'py=python', 'js=javascript', 'bash=sh', 'viml=vim']
