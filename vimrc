@@ -135,6 +135,18 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#statusline#top = 0
 let g:airline_statusline_ontop=0
 
+" Add the following snippet to your vimrc or put it into (Neo)Vim's plugin dir
+" to grep interactively in the current work dir.
+" Open the topmost file in (Neo)Vim by hitting <F2>.
+
+" Requires [ugrep](https://github.com/Genivia/ugrep), a drop-in alternative to grep
+" similar to ripgrep.
+
+let s:term = has('nvim') ? 'term' : 'term ++close'
+let s:cmd = 'ugrep --config --query --no-confirm --view='..shellescape(v:progpath)
+let s:cleanup = has('nvim') ? 'autocmd TermClose <buffer=abuf> if !v:event.status |bwipeout!| endif' : 'redraw!'
+command! UG exe s:term s:cmd | exe s:cleanup
+
 "NERD_tree
 noremap <F2> <ESC>:TlistToggle<CR>
 inoremap <C-F2> <ESC>:TlistToggle<CR>
@@ -450,3 +462,4 @@ if has("termguicolors")
     " enable true color
     set termguicolors
 endif
+
